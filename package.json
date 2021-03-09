@@ -2,5 +2,79 @@
   "name": "redcat",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "base64-img": "^1.0.4",
+    "bootstrap": "^4.6.0",
+    "classnames": "^2.2.6",
+    "formik": "^2.1.5",
+    "node-sass": "^5.0.0",
+    "react": "^16.13.1",
+    "react-autosuggest": "^10.0.2",
+    "react-avatar-editor": "11.0.9",
+    "react-debounce-input": "^3.2.2",
+    "react-dom": "^16.13.1",
+    "react-dropzone": "^11.1.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "url-join": "^4.0.1",
+    "yup": "^0.29.1"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production yarn run tw && react-scripts start",
+    "build": "yarn run tw && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "tw": "tailwindcss build src/css/tailwind.css -o src/css/styles.css",
+    "strings": "node ./bin/strings",
+    "pager": "node ./bin/pager",
+    "devex": "node ./bin/dev-cleaner/index",
+    "redev": "node ./bin/dev-cleaner/index -d"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/react-avatar-editor": "^10.3.5",
+    "arg": "^4.1.3",
+    "autoprefixer": "^9.8.5",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "date-fns": "^2.16.1",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "pkg-dir": "^4.2.0",
+    "postcss": "^7.0.30",
+    "prop-types": "^15.7.2",
+    "react-datepicker": "^3.1.3",
+    "reactstrap": "^8.9.0",
+    "shortid": "^2.2.15",
+    "svg-png-converter": "^0.0.9",
+    "tailwindcss": "^1.8.9",
+    "to": "^0.2.9",
+    "ts-react-json-table": "^0.1.2",
+    "update": "^0.7.4"
+  },
+  "proxy": "http://localhost:80"
 }

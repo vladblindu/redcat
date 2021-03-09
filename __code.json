@@ -1,0 +1,14 @@
+{
+  "D8TV1ONAuGO": {
+    "match": "//dev-code-in\n    if (process.env.REACT_APP_DEV_FORCE_LOGIN === 'disabled') {\n        populateLocalStorage(devAuthData, tokenKey, userKey)\n        return Promise.resolve()\n    }\n    //dev-code-out",
+    "file": "/Users/vlad/Documents/zecode/lib/frontbase-project/web/src/lib/auth/check-old-auth.js"
+  },
+  "l5iMcsniB5Y": {
+    "match": "//dev-code-in\n    if (process.env.REACT_APP_SPLASH === 'disabled') return\n    //dev-code-out",
+    "file": "/Users/vlad/Documents/zecode/lib/frontbase-project/web/src/lib/splash/index.js"
+  },
+  "W0ae4bT3WnG": {
+    "match": "//dev-code-in\n    if (process.env.REACT_APP_SPLASH === 'disabled') {\n        document.getElementById('root').style.display = 'block'\n        return\n    }\n    //dev-code-out",
+    "file": "/Users/vlad/Documents/zecode/lib/frontbase-project/web/src/lib/splash/ready.js"
+  }
+}
