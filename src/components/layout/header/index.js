@@ -1,136 +1,83 @@
-import React from "react";
-import {Link} from "react-router-dom";
-// reactstrap components
-import {
-    Button,
-    Collapse,
-    NavbarBrand,
-    Navbar,
-    Nav,
-    Container,
-    Row,
-    Col,
-} from "reactstrap"
+import React, {useEffect, useState} from "react";
 
+
+import {Link} from "react-router-dom";
+import Close from "../../svg/close";
+import MenuIcon from "../../svg/menu-icon";
+import {Button} from "./button";
 import Logo from './../../../assets/app-id/logo.png'
+
 import './styles.css'
 
 export default function Header() {
-    const [collapseOpen, setCollapseOpen] = React.useState(false);
-    const [collapseOut, setCollapseOut] = React.useState("");
-    const [color, setColor] = React.useState("navbar-transparent");
-    const [navbar, setNavbar] = React.useState(false)
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
 
-    React.useEffect(() => {
-        window.addEventListener("scroll", changeColor);
-        return function cleanup() {
-            window.removeEventListener("scroll", changeColor);
-        };
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false);
+        } else {
+            setButton(true);
+        }
+    };
+
+    useEffect(() => {
+        showButton();
     }, []);
-    const changeColor = () => {
-        if (
-            document.documentElement.scrollTop > 99 ||
-            document.body.scrollTop > 99
-        ) {
-            setColor("bg-black");
-        } else if (
-            document.documentElement.scrollTop < 100 ||
-            document.body.scrollTop < 100
-        )
-        {
-            setColor("navbar-transparent");
-        }
-    }
-    const toggleCollapse = () => {
-        document.documentElement.classList.toggle("nav-open");
-        setCollapseOpen(!collapseOpen);
-    };
-    const onCollapseExiting = () => {
-        setCollapseOut("collapsing-out");
-    };
-    const onCollapseExited = () => {
-        setCollapseOut("");
-    };
-    const changeBackground = () => {
-        if(window.scrollY >= 200){
-            setNavbar(true)
-        }else{
-            setNavbar(false)
-        }
-    }
-    window.addEventListener('scroll', changeBackground)
+
+    window.addEventListener('resize', showButton);
+
     return (
-        <Navbar className={navbar ? 'navbar active' : 'navbar'}>
-            <Container>
-                <div className="navbar-translate">
-                    <NavbarBrand to="/home" id="navbar-brand" tag={Link}>
-                        <div className='inline-block '>
-                            <img src={Logo} alt='Logo' className='h-20 w-20'/>
-                        </div>
-                        <div>
-                            <span className='inline-block'>RED</span>
-                            <span className='inline-block'>CAT</span>
-                            <span className='inline-block'>STUDIOS</span>
-                        </div>
-                    </NavbarBrand>
-                    <button
-                        aria-expanded={collapseOpen}
-                        className="navbar-toggler navbar-toggler"
-                        onClick={toggleCollapse}
-                    >
-                        <span className="navbar-toggler-bar bar1"/>
-                        <span className="navbar-toggler-bar bar2"/>
-                        <span className="navbar-toggler-bar bar3"/>
-                    </button>
-                </div>
-                <Collapse
-                    className={"justify-content-end " + collapseOut}
-                    navbar
-                    isOpen={collapseOpen}
-                    onExiting={onCollapseExiting}
-                    onExited={onCollapseExited}
-                >
-                    <div className="navbar-collapse-header">
-                        <Row>
-                            <Col className="collapse-brand" xs="6">
-                                <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                                    REDCAT STUDIOS
-                                </a>
-                            </Col>
-                            <Col className="collapse-close text-right" xs="6">
-                                <button
-                                    aria-expanded={collapseOpen}
-                                    className="navbar-toggler"
-                                    onClick={toggleCollapse}
-                                >
-                                </button>
-                            </Col>
-                        </Row>
+        <>
+            <nav className='navbar'>
+                <div className='navbar-container'>
+                    <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                        <img src={Logo} alt='Logo'/> RedCat Studios
+                    </Link>
+                    <div className='menu-icon text-white cursor-pointer mt-3' onClick={handleClick}>
+                        {click ? <Close size="50px"/> : <MenuIcon size='50px' />}
                     </div>
-                    <Nav navbar>
-                        <div className='p-4'>
-                            <Link to={'/about'} className='text-white font-bold text-md lg:text-lg'>
+                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                        <li className='nav-item'>
+                            <Link to='/about' className='nav-links' onClick={closeMobileMenu}>
                                 ABOUT
                             </Link>
-                        </div>
-                        <div className='p-4'>
-                            <Link to={'/clients'} className='text-white font-bold text-md lg:text-lg'>
+                        </li>
+                        <li className='nav-item'>
+                            <Link
+                                to='/clients'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
                                 CLIENTS
                             </Link>
-                        </div>
-                        <div className='p-4'>
-                            <Link to={'/catalogue'} className='text-white font-bold text-md lg:text-lg'>
+                        </li>
+                        <li className='nav-item'>
+                            <Link
+                                to='/catalogue'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
                                 CATALOGUE
                             </Link>
-                        </div>
-                        <div className='p-4'>
-                            <Link to={'/login'} className='text-red-700 font-bold text-md lg:text-lg'>
+                        </li>
+
+                        <li>
+                            <Link
+                                to='/login'
+                                className='nav-links-mobile'
+                                onClick={closeMobileMenu}
+                            >
                                 LOGIN
                             </Link>
-                        </div>
-                    </Nav>
-                </Collapse>
-            </Container>
-        </Navbar>
+                        </li>
+                    </ul>
+                    {button && <Button buttonStyle='btn--outline'>LOGIN</Button>}
+                </div>
+            </nav>
+        </>
     );
 }

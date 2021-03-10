@@ -2,7 +2,7 @@ import Header from './header'
 import React from 'react'
 
 
-export const AppLayout = ({children}) => <div className="pt-16 h-full">
+export const AppLayout = ({children}) => <div className="h-full">
     <Header/>
         {children}
 </div>

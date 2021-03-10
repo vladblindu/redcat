@@ -12,10 +12,6 @@ import {splashContentCss} from './components/splash/splash-content-css'
 import {ROOT_ID} from './globals/constants'
 import EndGame from './components/bad-karma/end-game'
 
-//we need these for header bootstrap
-import "./assets/css/nucleo-icons.css";
-import "./assets/scss/blk-design-system-react.scss?v=1.2.0";
-import "./assets/demo/demo.css";
 
 const aboutHtml = ReactDOMServ.renderToString(<About/>)
 const activateHtml = ReactDOMServ.renderToString(<Activate/>)

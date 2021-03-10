@@ -5,7 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "base64-img": "^1.0.4",
-    "bootstrap": "^4.6.0",
     "classnames": "^2.2.6",
     "formik": "^2.1.5",
     "node-sass": "^5.0.0",
