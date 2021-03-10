@@ -1,5 +1,5 @@
 import React from 'react'
-import Clients from "../forms_a/clients"
+import Clients from "../screens/clients"
 import Page from "../layout/page.layout"
 
 

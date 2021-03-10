@@ -6,20 +6,21 @@ import {
     Collapse,
     NavbarBrand,
     Navbar,
-    NavItem,
-    NavLink,
     Nav,
     Container,
     Row,
     Col,
-    UncontrolledTooltip,
 } from "reactstrap"
+
 import Logo from './../../../assets/app-id/logo.png'
+import './styles.css'
 
 export default function Header() {
     const [collapseOpen, setCollapseOpen] = React.useState(false);
     const [collapseOut, setCollapseOut] = React.useState("");
     const [color, setColor] = React.useState("navbar-transparent");
+    const [navbar, setNavbar] = React.useState(false)
+
     React.useEffect(() => {
         window.addEventListener("scroll", changeColor);
         return function cleanup() {
@@ -31,7 +32,7 @@ export default function Header() {
             document.documentElement.scrollTop > 99 ||
             document.body.scrollTop > 99
         ) {
-            setColor("bg-info");
+            setColor("bg-black");
         } else if (
             document.documentElement.scrollTop < 100 ||
             document.body.scrollTop < 100
@@ -50,15 +51,23 @@ export default function Header() {
     const onCollapseExited = () => {
         setCollapseOut("");
     };
+    const changeBackground = () => {
+        if(window.scrollY >= 200){
+            setNavbar(true)
+        }else{
+            setNavbar(false)
+        }
+    }
+    window.addEventListener('scroll', changeBackground)
     return (
-        <Navbar className={"fixed-top"} color-on-scroll="100" expand="lg bg-dark">
+        <Navbar className={navbar ? 'navbar active' : 'navbar'}>
             <Container>
                 <div className="navbar-translate">
-                    <NavbarBrand to="/" id="navbar-brand" tag={Link}>
+                    <NavbarBrand to="/home" id="navbar-brand" tag={Link}>
                         <div className='inline-block '>
                             <img src={Logo} alt='Logo' className='h-20 w-20'/>
                         </div>
-                        <div className='inline-block'>
+                        <div>
                             <span className='inline-block'>RED</span>
                             <span className='inline-block'>CAT</span>
                             <span className='inline-block'>STUDIOS</span>

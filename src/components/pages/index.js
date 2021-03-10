@@ -14,6 +14,7 @@ import HomePage from "./home.page"
 import ClientsPage from "./clients.page"
 import CataloguePage from "./catalogue.page"
 import AboutPage from "./about.page"
+import TestimonialsPage from "./testimonials.page"
 
 
 export {ForgotPassword}
@@ -30,5 +31,6 @@ export {AboutPage}
 export {HomePage}
 export {ClientsPage}
 export {CataloguePage}
+export {TestimonialsPage}
 
 

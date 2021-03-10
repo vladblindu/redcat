@@ -1,6 +1,6 @@
 import React from 'react'
 import Page from '../layout/page.layout'
-import About from "../forms_a/about/about";
+import About from "../screens/about/about";
 import {ABOUT_ROUTE} from "../routing/constants";
 
 
