@@ -75,7 +75,7 @@ export default function Header() {
                             </Link>
                         </li>
                     </ul>
-                    {button && <Button buttonStyle='btn--outline'>LOGIN</Button>}
+                    {button && <Button buttonStyle='btn--outline '>LOGIN</Button>}
                 </div>
             </nav>
         </>
